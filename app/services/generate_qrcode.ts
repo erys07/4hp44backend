@@ -14,7 +14,8 @@ class QRCode {
 
     this.client = new Client({
       puppeteer: {
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        timeout: 1000000
     }
     });
 
