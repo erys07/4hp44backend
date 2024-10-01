@@ -32,6 +32,11 @@ router.get('api/uploads/:filename', async ({ params, response }) => {
 
 router.get('api/qr-code', async ({ response }) => {
   const qrCode = generate_qrcode.getQRCode();
+
+  if (!generate_qrcode.booted) {
+    return response.status(500).json({ message: 'WhatsApp client not initialized' });
+  }
+
   if (qrCode) {
     return response.json({ qrCode });
   } else {
